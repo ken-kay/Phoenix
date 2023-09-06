@@ -54,7 +54,7 @@ defmodule Hello do
   end
 
   def song() do
-    [ "say", "something", "I'm" ]
+    [ "say", "something", "I'm", "giving", "up", "on", "you" ]
   end
 
   def lyrics(song, lyrics) do
@@ -87,4 +87,15 @@ defmodule Hello do
   def word_count(song) do
     length(song)
   end
+
+  def check_words(song, word) do
+    word in song
+  end
+
+  def fruit_loops([]), do: nil
+  def fruit_loops([h | t]) do
+    IO.puts(h)
+    fruit_loops(t)
+  end
+
 end
