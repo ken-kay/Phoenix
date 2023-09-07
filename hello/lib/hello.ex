@@ -54,7 +54,8 @@ defmodule Hello do
   end
 
   def song() do
-    [ "say", "something", "I'm", "giving", "up", "on", "you" ]
+    [ "say", "something", "I'm", "giving", "up", "on", "you",
+      "I'll", "be", "the", "one", "if", "you", "want", "me", "to" ]
   end
 
   def lyrics(song, lyrics) do
@@ -97,5 +98,39 @@ defmodule Hello do
     IO.puts(h)
     fruit_loops(t)
   end
+# word search
+  def you_are([], _word), do: 0
+  def you_are([_head | _tail], "say"), do: 69
+  def you_are([word | tail], word), do: 1 + you_are(tail, word)
+  def you_are([_head | tail], word), do: you_are(tail, word)
+
+  def twins() do
+    [:Jack, :Ollie, :Ken, :Ethan]
+  end
+
+  def twins_list(:Jack) do
+    {12, 150, :cm}
+  end
+
+  def twins_list(:Ollie) do
+    {15, 165, :cm}
+  end
+
+  def twins_list(:Ken) do
+    {18, 180, :cm}
+  end
+
+  def twins_list(:Ethan) do
+    {18, 165, :cm}
+  end
+
+  def twins_list(_nameless) do
+    raise "Wrong name, check your privilege."
+  end
+
+  # when guard let me know some
+  def guardian(input) when is_integer(input), do: :integer
+  def guardian(input) when is_float(input), do: :float
+  def guardian(input) when not is_number(input), do: :not_num
 
 end
