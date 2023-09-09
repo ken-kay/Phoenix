@@ -133,4 +133,41 @@ defmodule Hello do
   def guardian(input) when is_float(input), do: :float
   def guardian(input) when not is_number(input), do: :not_num
 
+
+  # control flow
+  def check_senior(age) do
+    # if age < 65, do: "Get back to work!", else: "Time to take it easy"
+    unless age < 65, do: "Have a break", else: "Making paper"
+  end
+
+  # conditions
+  def check_grades(mark) do
+    cond do
+      mark == 100 -> "Perfection"
+      mark >= 50 -> "Passing grade"
+      mark < 50 -> "See me after class"
+      true -> "Undefined grade"
+    end
+  end
+
+  def error_code(code) do
+    case code do
+      200 -> :ok
+      502 -> :bad_gateway
+      _ -> :unknown
+    end
+  end
+
+
+  defp kg_to_lb(kg_val), do: kg_val * 2.2
+
+  def delivery(order_id) do
+    case order_id do
+      {weight, unit, quantity} when weight / quantity < 10 and unit == :kg -> :valid_order
+      {weight, unit, quantity} when unit == :lb ->
+        if kg_to_lb(weight) / quantity < 10, do: :valid_order, else: :order_invalid
+        _ -> :error
+    end
+  end
+
 end
